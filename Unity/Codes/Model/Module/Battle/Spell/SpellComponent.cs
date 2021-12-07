@@ -1,4 +1,4 @@
-﻿namespace ET.Codes.Model.Module.Spell
+﻿namespace ET
 {
     public class SpellComponent : Entity
     {

@@ -1,4 +1,4 @@
-﻿namespace ET.Codes.Hotfix.Module.Battle.Buff
+﻿namespace ET
 {
     public class BuffHelper
     {

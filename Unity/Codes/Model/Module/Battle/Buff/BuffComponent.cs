@@ -1,4 +1,4 @@
-﻿namespace ET.Codes.Model.Module.Buff
+﻿namespace ET
 {
     public class BuffComponent
     {
