@@ -319,6 +319,8 @@ namespace ET
                     return value;
                 case "string":
                     return $"\"{value}\"";
+                case "bool":
+                    return value == "1"? "true" : "false";
                 default:
                     throw new Exception($"不支持此类型: {type}");
             }

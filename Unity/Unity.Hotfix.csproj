@@ -591,10 +591,6 @@
       <Name>Unity.Mono</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Codes\Hotfix\Module\Battle\Effect" />
-    <Folder Include="Codes\Hotfix\Module\Battle\Spell" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
