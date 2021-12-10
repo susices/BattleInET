@@ -6,8 +6,7 @@
         public override void Awake(BuffEntity self, Entity sourceEntity, int buffConfigId)
         {
             BuffConfig buffConfig = BuffConfigCategory.Instance.Get(buffConfigId);
-            self.SourceEntity = sourceEntity;
-            self.BuffComponent = self.Parent as BuffComponent;
+            self.SourceEntityId = sourceEntity.Id;
             self.BuffConfigId = buffConfigId;
             self.CurrentLayer++;
             self.State = buffConfig.State;
@@ -32,9 +31,8 @@
         public static void Clear(this BuffEntity self)
         {
             self.CurrentLayer = 0;
-            self.SourceEntity = null;
+            self.SourceEntityId = 0;
             self.BuffConfigId = 0;
-            self.BuffComponent = null;
             self.State = BuffState.None;
         }
         
@@ -45,12 +43,19 @@
                 return;
             }
 
-            if (self.BuffComponent.BuffStateSets.ContainsKey(self.State))
+            var parentBuffComponent = self.GetParent<BuffComponent>();
+            if (parentBuffComponent==null)
             {
-                self.BuffComponent.BuffStateSets[self.State] -= 1;
-                if (self.BuffComponent.BuffStateSets[self.State]==0)
+                Log.Error($"buffEntity 无法获取Buff组件");
+                return;
+            }
+
+            if (parentBuffComponent.BuffStateSets.ContainsKey(self.State))
+            {
+                parentBuffComponent.BuffStateSets[self.State] -= 1;
+                if (parentBuffComponent.BuffStateSets[self.State]==0)
                 {
-                    self.BuffComponent.BuffStateSets.Remove(self.State);
+                    parentBuffComponent.BuffStateSets.Remove(self.State);
                 }
             }
             

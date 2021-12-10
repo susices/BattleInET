@@ -3,7 +3,7 @@
 namespace ET
 {
     [ObjectSystem]
-    public class BuffContainerAwakeSystem: AwakeSystem<BuffComponent>
+    public class BuffComponentAwakeSystem: AwakeSystem<BuffComponent>
     {
         public override void Awake(BuffComponent self)
         {
@@ -12,7 +12,7 @@ namespace ET
     }
 
     [ObjectSystem]
-    public class BuffContainerDestroySystem: DestroySystem<BuffComponent>
+    public class BuffComponentDestroySystem: DestroySystem<BuffComponent>
     {
         public override void Destroy(BuffComponent self)
         {
@@ -21,9 +21,9 @@ namespace ET
     }
 
     /// <summary>
-    /// Buff容器组件系统
+    /// Buff组件系统
     /// </summary>
-    public static class BuffContainerSystem
+    public static class BuffComponentSystem
     {
         /// <summary>
         /// 添加Buff到Buff容器
@@ -50,7 +50,7 @@ namespace ET
                 BuffEntity sameSourceBuffEntity = null;
                 foreach (BuffEntity buffEntity in buffEntityList)
                 {
-                    if (buffEntity.SourceEntity.Id == sourceEntity.Id)
+                    if (buffEntity.SourceEntityId == sourceEntity.Id)
                     {
                         sameSourceBuffEntity = buffEntity;
                         break;
@@ -82,7 +82,7 @@ namespace ET
         }
 
         /// <summary>
-        /// 从BuffManager移除Buff
+        /// 从Buff组件移除Buff
         /// </summary>
         public static bool TryRemoveBuff(this BuffComponent self, long buffEntityId)
         {

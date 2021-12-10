@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System.Runtime.CompilerServices;
+
+namespace ET
 {
     /// <summary>
     /// Buff工厂  构造Buff实体
@@ -13,7 +15,7 @@
             {
                 return null;
             }
-            BuffActionDispatcher.Instance.RunBuffTickAction(buffEntity);
+            BuffActionDispatcher.Instance.AddBuffTickComponent(buffEntity);
             if (BuffConfigCategory.Instance.Get(buffConfigId).DurationMillsecond>0)
             {
                 buffEntity.AddComponent<BuffCountDownComponent>();

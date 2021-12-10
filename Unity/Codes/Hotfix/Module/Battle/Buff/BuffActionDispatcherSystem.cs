@@ -84,6 +84,7 @@ namespace ET
                 Log.Error($"buffActionId {baseBuffActionId.ToString()} is not exist in idbuffActions!");
                 return;
             }
+            
 
             baseBuffAction.Run(buffEntity, args);
         }
@@ -157,11 +158,11 @@ namespace ET
         }
 
         /// <summary>
-        /// BuffTick时执行
+        /// 添加BuffTick组件
         /// </summary>
         /// <param name="self"></param>
         /// <param name="buffEntity"></param>
-        public static void RunBuffTickAction(this BuffActionDispatcher self, BuffEntity buffEntity)
+        public static void AddBuffTickComponent(this BuffActionDispatcher self, BuffEntity buffEntity)
         {
             if (BuffConfigCategory.Instance.Get(buffEntity.BuffConfigId).BuffTickActions == null)
             {
@@ -176,33 +177,13 @@ namespace ET
             buffEntity.AddComponent<BuffTickComponent>();
         }
 
-        /// <summary>
-        /// 获取Buff Tick Action列表
-        /// </summary>
-        /// <param name="self"></param>
-        /// <param name="buffEntity"></param>
-        /// <param name="BuffActionList"></param>
-        /// <param name="argsList"></param>
-        public static bool GetBuffTickActions(this BuffActionDispatcher self, BuffEntity buffEntity, List<IBuffAction> BuffActionList, List<int[]> argsList)
+        public static void RunBuffTickAction(this BuffActionDispatcher self, BuffEntity buffEntity)
         {
-            int[] buffTickActionIds = BuffConfigCategory.Instance.Get(buffEntity.BuffConfigId).BuffTickActions;
-            
-            for (int i = 0; i < buffTickActionIds.Length; i++)
+            int[] buffTickActions = BuffConfigCategory.Instance.Get(buffEntity.BuffConfigId).BuffTickActions;
+            if (self.RunBuffActions(buffEntity, buffTickActions))
             {
-                BuffActionConfig buffActionConfig = BuffActionConfigCategory.Instance.Get(buffTickActionIds[i]);
-                int baseBuffActionId = buffActionConfig.BaseActionId;
-                int[] args = buffActionConfig.actionArgs;
-                if (self.idBuffActions.TryGetValue(baseBuffActionId, out var baseBuffAction))
-                {
-                    BuffActionList.Add(baseBuffAction);
-                    argsList.Add(args);
-                }
-                else
-                {
-                    return false;
-                }
+                Log.Debug($"BuffTicked BuffConfigId: {buffEntity.BuffConfigId.ToString()}  BuffEntityId: {self.Id.ToString()}");
             }
-            return true;
         }
 
         /// <summary>

@@ -11,11 +11,6 @@
         public int BuffConfigId;
 
         /// <summary>
-        /// 所属Buff实体
-        /// </summary>
-        public BuffEntity ParentBuffEntity;
-
-        /// <summary>
         /// 记录是否已倒计时结束
         /// </summary>
         public bool IsCountDownEnd;

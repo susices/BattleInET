@@ -5,8 +5,7 @@
     {
         public override void Awake(BuffCountDownComponent self)
         {
-            self.ParentBuffEntity = self.GetParent<BuffEntity>();
-            self.BuffConfigId = self.ParentBuffEntity.BuffConfigId;
+            self.BuffConfigId = self.GetParent<BuffEntity>().BuffConfigId;
             self.IsCountDownEnd = false;
             self.BuffCountDownCancellationToken = new ETCancellationToken();
             self.CountDown().Coroutine();
@@ -24,7 +23,6 @@
                 self.BuffCountDownCancellationToken = null;
             }
             self.BuffConfigId = 0;
-            self.ParentBuffEntity = null;
         }
     }
 
@@ -34,9 +32,9 @@
         {
             if (await TimerComponent.Instance.WaitAsync(BuffConfigCategory.Instance.Get(self.BuffConfigId).DurationMillsecond,self.BuffCountDownCancellationToken))
             {
-                BuffActionDispatcher.Instance.RunBuffTimeOutAction(self.ParentBuffEntity);
+                BuffActionDispatcher.Instance.RunBuffTimeOutAction(self.GetParent<BuffEntity>());
                 self.IsCountDownEnd = true;
-                self.ParentBuffEntity.Dispose();
+                self.GetParent<BuffEntity>().Dispose();
             }
         }
     }

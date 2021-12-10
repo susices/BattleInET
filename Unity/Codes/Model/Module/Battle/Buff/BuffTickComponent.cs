@@ -19,20 +19,6 @@
         /// buffTick计时器Id
         /// </summary>
         public long BuffTickTimerId;
-
-        /// <summary>
-        /// 轮询BuffAction列表组件
-        /// </summary>
-        public ListComponent<IBuffAction> TickBuffActions;
-
-        /// <summary>
-        /// 轮询BuffAction 参数列表组件
-        /// </summary>
-        public ListComponent<int[]> TickBuffActionsArgs;
-
-        /// <summary>
-        /// 所属Buff实体
-        /// </summary>
-        public BuffEntity ParentBuffEntity;
+        
     }
 }

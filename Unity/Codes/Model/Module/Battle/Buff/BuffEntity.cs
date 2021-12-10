@@ -23,13 +23,9 @@ namespace ET
         public int CurrentLayer;
 
         /// <summary>
-        /// Buff施加来源的实体
+        /// Buff施加来源的实体id
         /// </summary>
-        public Entity SourceEntity;
-
-        /// <summary>
-        /// 被添加到的Buff管理组件
-        /// </summary>
-        public BuffComponent BuffComponent;
+        public long SourceEntityId;
+        
     }
 }
