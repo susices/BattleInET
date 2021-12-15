@@ -27,7 +27,7 @@ namespace ET
     {
         public override void Destroy(BuffActionDispatcher self)
         {
-            self.idBuffActions.Clear();
+            self.BuffActions.Clear();
             BuffActionDispatcher.Instance = null;
         }
     }
@@ -36,7 +36,7 @@ namespace ET
     {
         public static void Load(this BuffActionDispatcher self)
         {
-            self.idBuffActions.Clear();
+            self.BuffActions.Clear();
 
             var types = Game.EventSystem.GetTypes(typeof (BaseBuffActionAttribute));
             foreach (Type type in types)
@@ -57,14 +57,14 @@ namespace ET
                     continue;
                 }
 
-                if (self.idBuffActions.ContainsKey(buffActionAttribute.Id))
+                if (self.BuffActions.ContainsKey(buffActionAttribute.Id))
                 {
-                    Type sameIdType = self.idBuffActions[buffActionAttribute.Id].GetType();
+                    Type sameIdType = self.BuffActions[buffActionAttribute.Id].GetType();
                     Log.Error($"{type.Name} has same id with {sameIdType.Name} : {buffActionAttribute.Id.ToString()}");
                     continue;
                 }
 
-                self.idBuffActions.Add(buffActionAttribute.Id, buffAction);
+                self.BuffActions.Add(buffActionAttribute.Id, buffAction);
             }
             
             Log.Debug("BuffActionDispatcherSystem Load Success");
@@ -79,9 +79,9 @@ namespace ET
         /// <param name="args"></param>
         public static void RunBuffAction(this BuffActionDispatcher self, BuffEntity buffEntity, int baseBuffActionId, int[] args)
         {
-            if (!self.idBuffActions.TryGetValue(baseBuffActionId, out IBuffAction baseBuffAction))
+            if (!self.BuffActions.TryGetValue(baseBuffActionId, out IBuffAction baseBuffAction))
             {
-                Log.Error($"buffActionId {baseBuffActionId.ToString()} is not exist in idbuffActions!");
+                Log.Error($"buffActionId {baseBuffActionId.ToString()} is not exist in buffActions!");
                 return;
             }
             

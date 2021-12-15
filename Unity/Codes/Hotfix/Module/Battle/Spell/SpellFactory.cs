@@ -1,4 +1,4 @@
-﻿namespace ET.Codes.Hotfix.Module.Battle.Spell
+﻿namespace ET
 {
     public class SpellFactory
     {
