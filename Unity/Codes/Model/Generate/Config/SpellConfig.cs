@@ -74,7 +74,9 @@ namespace ET
 		[ProtoMember(3)]
 		public int[] PreCondition { get; set; }
 		[ProtoMember(4)]
-		public int[] Effects { get; set; }
+		public int[] CastEffects { get; set; }
+		[ProtoMember(5)]
+		public int[] InterruptedEffects { get; set; }
 
 	}
 }

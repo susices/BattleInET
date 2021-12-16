@@ -7,26 +7,26 @@ namespace ET
 {
     [ProtoContract]
     [Config]
-    public partial class SpellBaseConditionConfigCategory : ProtoObject
+    public partial class EffectConfigCategory : ProtoObject
     {
-        public static SpellBaseConditionConfigCategory Instance;
+        public static EffectConfigCategory Instance;
 		
         [ProtoIgnore]
         [BsonIgnore]
-        private Dictionary<int, SpellBaseConditionConfig> dict = new Dictionary<int, SpellBaseConditionConfig>();
+        private Dictionary<int, EffectConfig> dict = new Dictionary<int, EffectConfig>();
 		
         [BsonElement]
         [ProtoMember(1)]
-        private List<SpellBaseConditionConfig> list = new List<SpellBaseConditionConfig>();
+        private List<EffectConfig> list = new List<EffectConfig>();
 		
-        public SpellBaseConditionConfigCategory()
+        public EffectConfigCategory()
         {
             Instance = this;
         }
 		
         public override void EndInit()
         {
-            foreach (SpellBaseConditionConfig config in list)
+            foreach (EffectConfig config in list)
             {
                 config.EndInit();
                 this.dict.Add(config.Id, config);
@@ -34,13 +34,13 @@ namespace ET
             this.AfterEndInit();
         }
 		
-        public SpellBaseConditionConfig Get(int id)
+        public EffectConfig Get(int id)
         {
-            this.dict.TryGetValue(id, out SpellBaseConditionConfig item);
+            this.dict.TryGetValue(id, out EffectConfig item);
 
             if (item == null)
             {
-                throw new Exception($"配置找不到，配置表名: {nameof (SpellBaseConditionConfig)}，配置id: {id}");
+                throw new Exception($"配置找不到，配置表名: {nameof (EffectConfig)}，配置id: {id}");
             }
 
             return item;
@@ -51,12 +51,12 @@ namespace ET
             return this.dict.ContainsKey(id);
         }
 
-        public Dictionary<int, SpellBaseConditionConfig> GetAll()
+        public Dictionary<int, EffectConfig> GetAll()
         {
             return this.dict;
         }
 
-        public SpellBaseConditionConfig GetOne()
+        public EffectConfig GetOne()
         {
             if (this.dict == null || this.dict.Count <= 0)
             {
@@ -67,10 +67,14 @@ namespace ET
     }
 
     [ProtoContract]
-	public partial class SpellBaseConditionConfig: ProtoObject, IConfig
+	public partial class EffectConfig: ProtoObject, IConfig
 	{
 		[ProtoMember(1)]
 		public int Id { get; set; }
+		[ProtoMember(3)]
+		public int BaseEffectId { get; set; }
+		[ProtoMember(4)]
+		public int[] EffectArgs { get; set; }
 
 	}
 }

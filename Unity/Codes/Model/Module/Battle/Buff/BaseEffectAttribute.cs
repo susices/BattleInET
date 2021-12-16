@@ -3,10 +3,10 @@
 namespace ET
 {
     
-    public class BaseBuffActionAttribute: BaseAttribute
+    public class BaseEffectAttribute: BaseAttribute
     {
         public int Id;
-        public BaseBuffActionAttribute(int BaseBuffActionId)
+        public BaseEffectAttribute(int BaseBuffActionId)
         {
             this.Id = BaseBuffActionId;
         }

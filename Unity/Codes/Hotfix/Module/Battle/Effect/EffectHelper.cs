@@ -1,4 +1,4 @@
-﻿namespace ET.Codes.Hotfix.Module.Battle.Effect
+﻿namespace ET
 {
     public class EffectHelper
     {

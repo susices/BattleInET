@@ -7,26 +7,26 @@ namespace ET
 {
     [ProtoContract]
     [Config]
-    public partial class BuffActionConfigCategory : ProtoObject
+    public partial class BaseConditionConfigCategory : ProtoObject
     {
-        public static BuffActionConfigCategory Instance;
+        public static BaseConditionConfigCategory Instance;
 		
         [ProtoIgnore]
         [BsonIgnore]
-        private Dictionary<int, BuffActionConfig> dict = new Dictionary<int, BuffActionConfig>();
+        private Dictionary<int, BaseConditionConfig> dict = new Dictionary<int, BaseConditionConfig>();
 		
         [BsonElement]
         [ProtoMember(1)]
-        private List<BuffActionConfig> list = new List<BuffActionConfig>();
+        private List<BaseConditionConfig> list = new List<BaseConditionConfig>();
 		
-        public BuffActionConfigCategory()
+        public BaseConditionConfigCategory()
         {
             Instance = this;
         }
 		
         public override void EndInit()
         {
-            foreach (BuffActionConfig config in list)
+            foreach (BaseConditionConfig config in list)
             {
                 config.EndInit();
                 this.dict.Add(config.Id, config);
@@ -34,13 +34,13 @@ namespace ET
             this.AfterEndInit();
         }
 		
-        public BuffActionConfig Get(int id)
+        public BaseConditionConfig Get(int id)
         {
-            this.dict.TryGetValue(id, out BuffActionConfig item);
+            this.dict.TryGetValue(id, out BaseConditionConfig item);
 
             if (item == null)
             {
-                throw new Exception($"配置找不到，配置表名: {nameof (BuffActionConfig)}，配置id: {id}");
+                throw new Exception($"配置找不到，配置表名: {nameof (BaseConditionConfig)}，配置id: {id}");
             }
 
             return item;
@@ -51,12 +51,12 @@ namespace ET
             return this.dict.ContainsKey(id);
         }
 
-        public Dictionary<int, BuffActionConfig> GetAll()
+        public Dictionary<int, BaseConditionConfig> GetAll()
         {
             return this.dict;
         }
 
-        public BuffActionConfig GetOne()
+        public BaseConditionConfig GetOne()
         {
             if (this.dict == null || this.dict.Count <= 0)
             {
@@ -67,14 +67,10 @@ namespace ET
     }
 
     [ProtoContract]
-	public partial class BuffActionConfig: ProtoObject, IConfig
+	public partial class BaseConditionConfig: ProtoObject, IConfig
 	{
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		[ProtoMember(3)]
-		public int BaseActionId { get; set; }
-		[ProtoMember(4)]
-		public int[] actionArgs { get; set; }
 
 	}
 }

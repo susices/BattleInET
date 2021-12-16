@@ -29,7 +29,7 @@ namespace ET
     {
         public static void Tick(this BuffTickComponent self)
         {
-            BuffActionDispatcher.Instance.RunBuffTickAction(self.GetParent<BuffEntity>());
+            EffectDispatcher.Instance.RunBuffTickAction(self.GetParent<BuffEntity>());
             Log.Debug($"BuffTicked BuffConfigId: {self.BuffConfigId.ToString()}  BuffEntityId: {self.Id.ToString()}");
         }
     }

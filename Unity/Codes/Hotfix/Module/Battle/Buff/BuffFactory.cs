@@ -10,12 +10,13 @@ namespace ET
         public static BuffEntity Create(BuffComponent buffComponent,Entity sourceEntity, int buffConfigId)
         {
             var buffEntity = buffComponent.AddChild<BuffEntity, Entity, int>(sourceEntity, buffConfigId, true);
-            BuffActionDispatcher.Instance.RunBuffAddAction(buffEntity);
+            EffectDispatcher.Instance.RunBuffAddAction(buffEntity);
             if (buffEntity.IsDisposed)
             {
                 return null;
             }
-            BuffActionDispatcher.Instance.AddBuffTickComponent(buffEntity);
+            
+            EffectDispatcher.Instance.AddBuffTickComponent(buffEntity);
             if (BuffConfigCategory.Instance.Get(buffConfigId).DurationMillsecond>0)
             {
                 buffEntity.AddComponent<BuffCountDownComponent>();

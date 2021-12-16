@@ -67,7 +67,7 @@ namespace ET
                     {
                         sameSourceBuffEntity.CurrentLayer++;
                     }
-                    BuffActionDispatcher.Instance.RunBuffRefreshAction(sameSourceBuffEntity);
+                    EffectDispatcher.Instance.RunBuffRefreshAction(sameSourceBuffEntity);
                     return true;
                 }
             
@@ -91,7 +91,7 @@ namespace ET
             {
                 return false;
             }
-            BuffActionDispatcher.Instance.RunBuffRemoveAction(buffEntity);
+            EffectDispatcher.Instance.RunBuffRemoveAction(buffEntity);
             Log.Debug($"BuffRemoved BuffConfigId: {buffEntity.BuffConfigId.ToString()}  BuffEntityId: {self.Id.ToString()}");
             buffEntity.Dispose();
             return true;
