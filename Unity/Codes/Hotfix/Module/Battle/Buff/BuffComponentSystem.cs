@@ -41,7 +41,7 @@ namespace ET
                 //检测是否含有该种Buff
                 if (!GetBuffByConfigId(self, buffConfigId, buffEntityList))
                 {
-                    AddBuff(self, buffConfigId, sourceEntity);
+                    AddBuffInternal(self, buffConfigId, sourceEntity);
                     return true;
                 }
 
@@ -67,14 +67,14 @@ namespace ET
                     {
                         sameSourceBuffEntity.CurrentLayer++;
                     }
-                    EffectDispatcher.Instance.RunBuffRefreshAction(sameSourceBuffEntity);
+                    sameSourceBuffEntity.RunRefreshBuffEffect();
                     return true;
                 }
             
                 //检测是否可以添加新Buff
                 if (buffEntityList.Count < buffConfig.MaxSourceCount)
                 {
-                    AddBuff(self, buffConfigId, sourceEntity);
+                    AddBuffInternal(self, buffConfigId, sourceEntity);
                     return true;
                 }
                 return false;
@@ -91,13 +91,13 @@ namespace ET
             {
                 return false;
             }
-            EffectDispatcher.Instance.RunBuffRemoveAction(buffEntity);
+            buffEntity.RunRemoveBuffEffect();
             Log.Debug($"BuffRemoved BuffConfigId: {buffEntity.BuffConfigId.ToString()}  BuffEntityId: {self.Id.ToString()}");
             buffEntity.Dispose();
             return true;
         }
 
-        private static void AddBuff(this BuffComponent self, int buffConfigId, Entity sourceEntity)
+        private static void AddBuffInternal(this BuffComponent self, int buffConfigId, Entity sourceEntity)
         {
             var buffEntity =  BuffFactory.Create(self, sourceEntity, buffConfigId);
             if (buffEntity ==null)

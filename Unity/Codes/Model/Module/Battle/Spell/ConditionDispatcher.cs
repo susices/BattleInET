@@ -6,6 +6,6 @@ namespace ET
     {
         public static ConditionDispatcher Instance;
 
-        public Dictionary<int, ICondition> SpellPreConditions = new Dictionary<int, ICondition>();
+        public Dictionary<int, ICondition> Conditions = new Dictionary<int, ICondition>();
     }
 }

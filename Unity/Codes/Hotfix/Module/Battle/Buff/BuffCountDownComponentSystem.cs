@@ -32,7 +32,7 @@
         {
             if (await TimerComponent.Instance.WaitAsync(BuffConfigCategory.Instance.Get(self.BuffConfigId).DurationMillsecond,self.BuffCountDownCancellationToken))
             {
-                EffectDispatcher.Instance.RunBuffTimeOutAction(self.GetParent<BuffEntity>());
+                self.GetParent<BuffEntity>().RunBuffTimeOutEffect();
                 self.IsCountDownEnd = true;
                 self.GetParent<BuffEntity>().Dispose();
             }

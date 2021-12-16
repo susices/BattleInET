@@ -1,6 +1,7 @@
 ﻿namespace ET
 {
-    public class SpellEntitySystem : Entity
+    
+    public static class SpellEntitySystem
     {
         
     }

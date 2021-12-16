@@ -7,7 +7,7 @@ namespace ET
     {
         public override void Load(ConditionDispatcher self)
         {
-            
+            self.Load();
         }
     }
     
@@ -16,7 +16,8 @@ namespace ET
     {
         public override void Awake(ConditionDispatcher self)
         {
-            
+            ConditionDispatcher.Instance = self;
+            self.Load();
         }
     }
     
@@ -25,7 +26,8 @@ namespace ET
     {
         public override void Destroy(ConditionDispatcher self)
         {
-            
+            self.Conditions.Clear();
+            ConditionDispatcher.Instance = null;
         }
     }
     
@@ -33,7 +35,7 @@ namespace ET
     {
         public static void Load(this ConditionDispatcher self)
         {
-            self.SpellPreConditions.Clear();
+            self.Conditions.Clear();
 
             var types = Game.EventSystem.GetTypes(typeof (BaseConditionAttribute));
             foreach (Type type in types)
@@ -54,14 +56,14 @@ namespace ET
                     continue;
                 }
 
-                if (self.SpellPreConditions.ContainsKey(conditionAttribute.Id))
+                if (self.Conditions.ContainsKey(conditionAttribute.Id))
                 {
-                    Type sameIdType = self.SpellPreConditions[conditionAttribute.Id].GetType();
+                    Type sameIdType = self.Conditions[conditionAttribute.Id].GetType();
                     Log.Error($"{type.Name} has same id with {sameIdType.Name} : {conditionAttribute.Id.ToString()}");
                     continue;
                 }
 
-                self.SpellPreConditions.Add(conditionAttribute.Id, condition);
+                self.Conditions.Add(conditionAttribute.Id, condition);
             }
             
             Log.Debug("ConditionDispatcherSystem Load Success");
@@ -73,7 +75,7 @@ namespace ET
         /// <returns></returns>
         public static bool CheckCondition(this ConditionDispatcher self, Entity entity, int baseConditionId, int[] args)
         {
-            if (!self.SpellPreConditions.TryGetValue(baseConditionId, out ICondition baseSpellPreCondition))
+            if (!self.Conditions.TryGetValue(baseConditionId, out ICondition baseSpellPreCondition))
             {
                 Log.Error($"baseConditionId {baseConditionId.ToString()} is not exist in Conditions!");
             }

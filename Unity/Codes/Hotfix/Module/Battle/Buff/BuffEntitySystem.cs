@@ -5,11 +5,11 @@
     {
         public override void Awake(BuffEntity self, Entity sourceEntity, int buffConfigId)
         {
-            BuffConfig buffConfig = BuffConfigCategory.Instance.Get(buffConfigId);
             self.SourceEntityId = sourceEntity.Id;
             self.BuffConfigId = buffConfigId;
             self.CurrentLayer++;
-            self.State = buffConfig.State;
+            self.State = self.BuffConfig.State;
+            self.RunAddBuffEffect();
             Log.Debug($"BuffAwaked BuffConfigId: {self.BuffConfigId.ToString()}  BuffEntityId: {self.Id.ToString()}");
         }
     }
@@ -27,6 +27,26 @@
 
     public static class BuffEntitySystem
     {
+
+        public static void RunAddBuffEffect(this BuffEntity self)
+        {
+            self.CastEffect(self.BuffConfig.BuffAddActions);
+        }
+
+        public static void RunRefreshBuffEffect(this BuffEntity self)
+        {
+            self.CastEffect(self.BuffConfig.BuffRefreshActions);
+        }
+
+        public static void RunRemoveBuffEffect(this BuffEntity self)
+        {
+            self.CastEffect(self.BuffConfig.BuffRemoveActions);
+        }
+
+        public static void RunBuffTimeOutEffect(this BuffEntity self)
+        {
+            self.CastEffect(self.BuffConfig.BuffTimeOutActions);
+        }
 
         public static void Clear(this BuffEntity self)
         {

@@ -30,7 +30,7 @@
             return false;
         }
 
-        public static async ETTask<bool> TryCastSpell(int spellConfigId, SpellComponent spellComponent)
+        public static async ETTask<bool> CastSpell(int spellConfigId, SpellComponent spellComponent)
         {
             await ETTask.CompletedTask;
             if (!CheckSpellPreCondition(spellConfigId, spellComponent))
@@ -39,6 +39,8 @@
             }
             
             // wenchao 执行施法流程
+            
+            
 
             return true;
             

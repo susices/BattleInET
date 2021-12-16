@@ -13,6 +13,17 @@ namespace ET
         public int BuffConfigId;
 
         /// <summary>
+        /// Buff配置
+        /// </summary>
+        public BuffConfig BuffConfig
+        {
+            get
+            {
+                return BuffConfigCategory.Instance.Get(this.BuffConfigId);
+            }
+        }
+
+        /// <summary>
         /// Buff状态
         /// </summary>
         public int State;
