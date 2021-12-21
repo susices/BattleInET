@@ -76,6 +76,8 @@ namespace ET
 		[ProtoMember(4)]
 		public int[] CastEffects { get; set; }
 		[ProtoMember(5)]
+		public bool CanInterrpted { get; set; }
+		[ProtoMember(6)]
 		public int[] InterruptedEffects { get; set; }
 
 	}
