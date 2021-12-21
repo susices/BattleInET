@@ -40,7 +40,7 @@
             {
                 if (await TimerComponent.Instance.WaitAsync(spellConfig.CastEffects[i], spellEntity.SpellCancellationToken))
                 {
-                    spellEntity.CastEffect(spellConfig.CastEffects[i+1]);
+                    EffectHelper.CastEffect(spellEntity,spellConfig.CastEffects[i+1]);
                 }else
                 {
                     return;
@@ -59,7 +59,11 @@
                 return false;
             }
             InterruptedSpell.SpellCancellationToken.Cancel();
-            InterruptedSpell.CastEffect(InterruptedSpell.SpellConfig.InterruptedEffects);
+            var SpellConfig = InterruptedSpell.SpellConfig;
+            for (int i = 0; i < SpellConfig.InterruptedEffects.Length; i++)
+            {
+                EffectHelper.CastEffect(InterruptedSpell,SpellConfig.InterruptedEffects[i]);
+            }
             InterruptedSpell.Dispose();
             return true;
         }

@@ -637,10 +637,10 @@
      <HintPath>D:/Software/UnityEditor/2020.3.23f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
      <Reference Include="CommandLine">
-     <HintPath>D:/GitProject/GoapInET/Unity/Assets/Plugins/CommandLine.dll</HintPath>
+     <HintPath>D:/GitProject/BattleInET/Unity/Assets/Plugins/CommandLine.dll</HintPath>
      </Reference>
      <Reference Include="ICSharpCode.SharpZipLib">
-     <HintPath>D:/GitProject/GoapInET/Unity/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+     <HintPath>D:/GitProject/BattleInET/Unity/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>D:/Software/UnityEditor/2020.3.23f1c1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -991,10 +991,10 @@
      <HintPath>D:/Software/UnityEditor/2020.3.23f1c1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
-     <HintPath>D:/GitProject/GoapInET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     <HintPath>D:/GitProject/BattleInET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
-     <HintPath>D:/GitProject/GoapInET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     <HintPath>D:/GitProject/BattleInET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

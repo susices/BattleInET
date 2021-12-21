@@ -8,8 +8,15 @@
         public int EffectConfigId;
 
         /// <summary>
-        /// 效果施加来源 实体Id
+        /// 效果配置
         /// </summary>
-        public long SourceEntityId;
+        public EffectConfig EffectConfig
+        {
+            get
+            {
+                return EffectConfigCategory.Instance.Get(this.EffectConfigId);
+            }
+        }
+        
     }
 }

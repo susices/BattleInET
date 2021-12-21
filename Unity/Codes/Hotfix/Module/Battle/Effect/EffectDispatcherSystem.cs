@@ -81,27 +81,18 @@ namespace ET
                 return;
             }
             
-
             baseBuffAction.Run(effectEntity, args);
         }
 
         /// <summary>
         /// 运行Effect方法
         /// </summary>
-        public static bool RunEffects(this EffectDispatcher self, EffectEntity effectEntity, int[] effectIds)
+        public static bool RunEffect(this EffectDispatcher self, EffectEntity effectEntity, int effectId)
         {
-            if (effectIds==null)
-            {
-                return false;
-            }
-            
-            foreach (int effectId in effectIds)
-            {
-                EffectConfig effectConfig = EffectConfigCategory.Instance.Get(effectId);
-                int baseEffectId = effectConfig.BaseEffectId;
-                int[] args = effectConfig.EffectArgs;
-                self.RunBaseEffect(effectEntity, baseEffectId, args);
-            }
+            EffectConfig effectConfig = EffectConfigCategory.Instance.Get(effectId);
+            int baseEffectId = effectConfig.BaseEffectId;
+            int[] args = effectConfig.EffectArgs;
+            self.RunBaseEffect(effectEntity, baseEffectId, args);
             return true;
         }
     }

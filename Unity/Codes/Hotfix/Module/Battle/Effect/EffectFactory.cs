@@ -2,9 +2,10 @@
 {
     public static class EffectFactory
     {
-        public static EffectEntity Create(Entity targetEntity, Entity sourceEntity, int effectConfigId)
+        public static EffectEntity Create(Entity CastEffectEntity, int effectConfigId)
         {
-            var effectEntity = targetEntity.AddChild<EffectEntity, Entity, int>(sourceEntity, effectConfigId);
+            var effectEntity = CastEffectEntity.AddChild<EffectEntity>();
+            effectEntity.EffectConfigId = effectConfigId;
             return effectEntity;
         }
     }

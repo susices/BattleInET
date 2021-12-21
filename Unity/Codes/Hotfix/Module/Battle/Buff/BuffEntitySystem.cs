@@ -28,24 +28,32 @@
     public static class BuffEntitySystem
     {
 
+        public static void RunBuffEffects(this BuffEntity self, int[] buffEffectIds)
+        {
+            for (int i = 0; i < buffEffectIds.Length; i++)
+            {
+                EffectHelper.CastEffect(self,buffEffectIds[i]);
+            }
+        }
+
         public static void RunAddBuffEffect(this BuffEntity self)
         {
-            self.CastEffect(self.BuffConfig.BuffAddActions);
+            self.RunBuffEffects(self.BuffConfig.BuffAddActions);
         }
 
         public static void RunRefreshBuffEffect(this BuffEntity self)
         {
-            self.CastEffect(self.BuffConfig.BuffRefreshActions);
+            self.RunBuffEffects(self.BuffConfig.BuffRefreshActions);
         }
 
         public static void RunRemoveBuffEffect(this BuffEntity self)
         {
-            self.CastEffect(self.BuffConfig.BuffRemoveActions);
+            self.RunBuffEffects(self.BuffConfig.BuffRemoveActions);
         }
 
         public static void RunBuffTimeOutEffect(this BuffEntity self)
         {
-            self.CastEffect(self.BuffConfig.BuffTimeOutActions);
+            self.RunBuffEffects(self.BuffConfig.BuffTimeOutActions);
         }
 
         public static void Clear(this BuffEntity self)
