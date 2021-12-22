@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff906ecbbd0163f4094f8fa4e305d39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CodeMode: 2
+  CodeMode: 1
 --- !u!4 &575235020
 Transform:
   m_ObjectHideFlags: 0
@@ -450,6 +450,8 @@ MonoBehaviour:
   - key: Unit
     gameObject: {fileID: 1610378981859644, guid: cfaf4529ce2243c4c85126e9d008897b,
       type: 3}
+  - key: Run
+    gameObject: {fileID: 7400000, guid: f57ee821486cd7b488adf1063a8dd207, type: 3}
 --- !u!1 &630054495
 GameObject:
   m_ObjectHideFlags: 0
