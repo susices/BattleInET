@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+﻿using Animancer;
+using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
-
 namespace ET.Module
 {
-    public class PlayableAnimationComponentAwakeSystem: AwakeSystem<PlayableAnimationComponent>
+    public class AnimationComponentAwakeSystem: AwakeSystem<AnimationComponent>
     {
-        public override void Awake(PlayableAnimationComponent self)
+        public override void Awake(AnimationComponent self)
         {
             var gameObjectComponent = self.Parent.GetComponent<GameObjectComponent>();
             if (gameObjectComponent==null)
@@ -24,59 +24,35 @@ namespace ET.Module
                 return;
             }
 
+            var AnimancerComponent = gameObjectComponent.GameObject.GetComponent<AnimancerComponent>();
+            if (self.AnimancerComponent==null)
+            {
+                AnimancerComponent = gameObjectComponent.GameObject.AddComponent<AnimancerComponent>();
+            }
             self.Animator = animator;
-            var clip = GlobalComponent.Instance.Global.GetComponent<ReferenceCollector>().Get<AnimationClip>("Run");
-            self.Play(clip);
+            self.AnimancerComponent = AnimancerComponent;
+            
+            var clip = GlobalComponent.Instance.Global.GetComponent<ReferenceCollector>().Get<AnimationClip>("Attack");
+            
         }
     }
     
-    public class PlayableAnimationComponentDestorySystem: DestroySystem<PlayableAnimationComponent>
+    public class AnimationComponentDestorySystem: DestroySystem<AnimationComponent>
     {
-        public override void Destroy(PlayableAnimationComponent self)
+        public override void Destroy(AnimationComponent self)
         {
-            self.Graph.Destroy();
             self.Animator = null;
+            self.AnimancerComponent = null;
         }
     }
 
-    public static class PlayableAnimationComponentSystem
+    public static class AnimationComponentSystem
     {
-        public static void Play(this PlayableAnimationComponent self, AnimationClip clip)
+        public static void Play(this AnimationComponent self, AnimationClip clip, float fadeTime = 0.25f, FadeMode fadeMode = FadeMode.FixedSpeed)
         {
-            self.Graph = PlayableGraph.Create();
-            self.Graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
-            var Output = AnimationPlayableOutput.Create(self.Graph, "Animation", self.Animator);
-            AnimationClipPlayable clipPlayable = AnimationClipPlayable.Create(self.Graph, clip);
-            Output.SetSourcePlayable(clipPlayable);
-            self.Graph.Play();
+            var animancerState =  self.AnimancerComponent.Play(clip, fadeTime, fadeMode);
         }
-
-        public static void PlayBlendTree(this PlayableAnimationComponent self, AnimationClip clip0,AnimationClip clip1)
-        {
-            // Creates the graph, the mixer and binds them to the Animator.
-
-            self.Graph = PlayableGraph.Create();
-
-            var playableOutput = AnimationPlayableOutput.Create(self.Graph, "Animation", self.Animator);
-
-            var mixerPlayable = AnimationMixerPlayable.Create(self.Graph, 2);
-            
-            playableOutput.SetSourcePlayable(mixerPlayable);
-
-            // Creates AnimationClipPlayable and connects them to the mixer.
-
-            var clipPlayable0 = AnimationClipPlayable.Create(self.Graph, clip0);
-
-            var clipPlayable1 = AnimationClipPlayable.Create(self.Graph, clip1);
-
-            self.Graph.Connect(clipPlayable0, 0, mixerPlayable, 0);
-
-            self.Graph.Connect(clipPlayable1, 0, mixerPlayable, 1);
-            
-            // Plays the Graph.
-
-            self.Graph.Play();
-        }
+        
         
     }
 }
