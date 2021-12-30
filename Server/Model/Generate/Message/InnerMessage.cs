@@ -3,22 +3,19 @@ using ProtoBuf;
 using System.Collections.Generic;
 namespace ET
 {
-/// <summary>
-/// 传送unit
-/// </summary>
-	[ResponseType(nameof(M2M_TrasferUnitResponse))]
-	[Message(InnerOpcode.M2M_TrasferUnitRequest)]
+	[ResponseType(nameof(ObjectQueryResponse))]
+	[Message(InnerOpcode.ObjectQueryRequest)]
 	[ProtoContract]
-	public partial class M2M_TrasferUnitRequest: Object, IActorRequest
+	public partial class ObjectQueryRequest: Object, IActorRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
-		public Unit Unit { get; set; }
+		public long Key { get; set; }
+
+		[ProtoMember(2)]
+		public long InstanceId { get; set; }
 
 	}
 
@@ -48,9 +45,6 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 	}
 
 	[Message(InnerOpcode.A2M_Reload)]
@@ -75,9 +69,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
 		public long Id { get; set; }
@@ -110,9 +101,6 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
 		public long Id { get; set; }
 
@@ -144,9 +132,6 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
 		public long Key { get; set; }
 
@@ -177,9 +162,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
 		public long Key { get; set; }
@@ -215,9 +197,6 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
 		public long Key { get; set; }
 
@@ -252,9 +231,6 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
 		public long Key { get; set; }
 
@@ -282,9 +258,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
 		public long Key { get; set; }
@@ -316,9 +289,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
 		public string Account { get; set; }
@@ -354,9 +324,6 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
 		public long PlayerId { get; set; }
 
@@ -378,15 +345,9 @@ namespace ET
 		[ProtoMember(92)]
 		public string Message { get; set; }
 
-// 自己的unit id
-// 自己的unit id
+// 所有的unit
 		[ProtoMember(1)]
-		public long UnitId { get; set; }
-
-// 所有的unit
-// 所有的unit
-		[ProtoMember(2)]
-		public List<UnitInfo> Units = new List<UnitInfo>();
+		public long MyId { get; set; }
 
 	}
 
@@ -396,9 +357,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(94)]
-		public long ActorId { get; set; }
 
 	}
 

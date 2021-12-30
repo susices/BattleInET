@@ -11,9 +11,6 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
 		public string request { get; set; }
 
@@ -44,9 +41,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
 		public int MapIndex { get; set; }
@@ -91,15 +85,39 @@ namespace ET
 		[ProtoMember(92)]
 		public string Message { get; set; }
 
-// 自己的unit id
-// 自己的unit id
+// 自己unit
 		[ProtoMember(1)]
-		public long UnitId { get; set; }
+		public long MyId { get; set; }
 
-// 所有的unit
-// 所有的unit
+	}
+
+	[Message(OuterOpcode.MoveInfo)]
+	[ProtoContract]
+	public partial class MoveInfo: Object
+	{
+		[ProtoMember(1)]
+		public List<float> X = new List<float>();
+
 		[ProtoMember(2)]
-		public List<UnitInfo> Units = new List<UnitInfo>();
+		public List<float> Y = new List<float>();
+
+		[ProtoMember(3)]
+		public List<float> Z = new List<float>();
+
+		[ProtoMember(4)]
+		public float A { get; set; }
+
+		[ProtoMember(5)]
+		public float B { get; set; }
+
+		[ProtoMember(6)]
+		public float C { get; set; }
+
+		[ProtoMember(7)]
+		public float W { get; set; }
+
+		[ProtoMember(8)]
+		public int TurnSpeed { get; set; }
 
 	}
 
@@ -114,19 +132,34 @@ namespace ET
 		public int ConfigId { get; set; }
 
 		[ProtoMember(3)]
-		public float X { get; set; }
+		public int Type { get; set; }
 
 		[ProtoMember(4)]
-		public float Y { get; set; }
+		public float X { get; set; }
 
 		[ProtoMember(5)]
-		public float Z { get; set; }
+		public float Y { get; set; }
 
 		[ProtoMember(6)]
-		public List<int> Ks = new List<int>();
+		public float Z { get; set; }
 
 		[ProtoMember(7)]
+		public float ForwardX { get; set; }
+
+		[ProtoMember(8)]
+		public float ForwardY { get; set; }
+
+		[ProtoMember(9)]
+		public float ForwardZ { get; set; }
+
+		[ProtoMember(10)]
+		public List<int> Ks = new List<int>();
+
+		[ProtoMember(11)]
 		public List<long> Vs = new List<long>();
+
+		[ProtoMember(12)]
+		public MoveInfo MoveInfo { get; set; }
 
 	}
 
@@ -137,11 +170,17 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(2)]
 		public List<UnitInfo> Units = new List<UnitInfo>();
+
+	}
+
+	[Message(OuterOpcode.M2C_RemoveUnits)]
+	[ProtoContract]
+	public partial class M2C_RemoveUnits: Object, IActorMessage
+	{
+		[ProtoMember(2)]
+		public List<long> Units = new List<long>();
 
 	}
 
@@ -151,9 +190,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
 		public float X { get; set; }
@@ -173,18 +209,12 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 	}
 
 	[Message(OuterOpcode.M2C_PathfindingResult)]
 	[ProtoContract]
 	public partial class M2C_PathfindingResult: Object, IActorMessage
 	{
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
 		[ProtoMember(1)]
 		public long Id { get; set; }
 
@@ -396,9 +426,6 @@ namespace ET
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
 		public int N { get; set; }

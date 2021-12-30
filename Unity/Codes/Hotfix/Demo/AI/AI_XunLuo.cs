@@ -14,11 +14,11 @@ namespace ET
             return 1;
         }
 
-        public override async ETVoid Execute(AIComponent aiComponent, AIConfig aiConfig, ETCancellationToken cancellationToken)
+        public override async ETTask Execute(AIComponent aiComponent, AIConfig aiConfig, ETCancellationToken cancellationToken)
         {
             Scene zoneScene = aiComponent.DomainScene();
 
-            Unit myUnit = zoneScene.GetComponent<UnitComponent>().MyUnit;
+            Unit myUnit = UnitHelper.GetMyUnit(zoneScene);
             if (myUnit == null)
             {
                 return;

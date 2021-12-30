@@ -6,7 +6,6 @@
         public const int MoveTimer = 1001;
         public const int AITimer = 1002;
         public const int SessionAcceptTimeout = 1003;
-        public const int BuffTickTimer = 1004;
         // 不能超过10000
     }
 }

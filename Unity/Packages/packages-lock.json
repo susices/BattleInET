@@ -25,13 +25,6 @@
       },
       "url": "https://packages.unity.cn"
     },
-    "com.unity.playablegraph-visualizer": {
-      "version": "0.2.1-preview.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.cn"
-    },
     "com.unity.test-framework": {
       "version": "1.1.29",
       "depth": 1,
