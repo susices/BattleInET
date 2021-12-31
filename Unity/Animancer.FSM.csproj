@@ -41,17 +41,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\KeyChange.cs" />
      <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\DelegateState.cs" />
+     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\InputBuffer2.cs" />
+     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\StateSelector.cs" />
+     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\StateBehaviour.cs" />
+     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\KeyChange.cs" />
      <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\StateChange.cs" />
      <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\InputBuffer1.cs" />
      <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\IState.cs" />
      <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\AssemblyInfo.cs" />
-     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\InputBuffer2.cs" />
-     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\StateSelector.cs" />
      <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\StateMachine1.cs" />
      <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\StateMachine2.cs" />
-     <Compile Include="Assets\Mono\Module\Animancer\Utilities\FSM\StateBehaviour.cs" />
      <None Include="Assets\Mono\Module\Animancer\Utilities\FSM\Animancer.FSM.asmdef" />
      <Reference Include="UnityEngine">
      <HintPath>D:/Software/UnityEditor/2020.3.23f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

@@ -7,26 +7,26 @@ namespace ET
 {
     [ProtoContract]
     [Config]
-    public partial class UnitConfigCategory : ProtoObject
+    public partial class PlayerInfoConfigCategory : ProtoObject
     {
-        public static UnitConfigCategory Instance;
+        public static PlayerInfoConfigCategory Instance;
 		
         [ProtoIgnore]
         [BsonIgnore]
-        private Dictionary<int, UnitConfig> dict = new Dictionary<int, UnitConfig>();
+        private Dictionary<int, PlayerInfoConfig> dict = new Dictionary<int, PlayerInfoConfig>();
 		
         [BsonElement]
         [ProtoMember(1)]
-        private List<UnitConfig> list = new List<UnitConfig>();
+        private List<PlayerInfoConfig> list = new List<PlayerInfoConfig>();
 		
-        public UnitConfigCategory()
+        public PlayerInfoConfigCategory()
         {
             Instance = this;
         }
 		
         public override void EndInit()
         {
-            foreach (UnitConfig config in list)
+            foreach (PlayerInfoConfig config in list)
             {
                 config.EndInit();
                 this.dict.Add(config.Id, config);
@@ -34,13 +34,13 @@ namespace ET
             this.AfterEndInit();
         }
 		
-        public UnitConfig Get(int id)
+        public PlayerInfoConfig Get(int id)
         {
-            this.dict.TryGetValue(id, out UnitConfig item);
+            this.dict.TryGetValue(id, out PlayerInfoConfig item);
 
             if (item == null)
             {
-                throw new Exception($"配置找不到，配置表名: {nameof (UnitConfig)}，配置id: {id}");
+                throw new Exception($"配置找不到，配置表名: {nameof (PlayerInfoConfig)}，配置id: {id}");
             }
 
             return item;
@@ -51,12 +51,12 @@ namespace ET
             return this.dict.ContainsKey(id);
         }
 
-        public Dictionary<int, UnitConfig> GetAll()
+        public Dictionary<int, PlayerInfoConfig> GetAll()
         {
             return this.dict;
         }
 
-        public UnitConfig GetOne()
+        public PlayerInfoConfig GetOne()
         {
             if (this.dict == null || this.dict.Count <= 0)
             {
@@ -67,14 +67,12 @@ namespace ET
     }
 
     [ProtoContract]
-	public partial class UnitConfig: ProtoObject, IConfig
+	public partial class PlayerInfoConfig: ProtoObject, IConfig
 	{
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		[ProtoMember(2)]
-		public int Type { get; set; }
-		[ProtoMember(4)]
-		public int TypeConfigId { get; set; }
+		[ProtoMember(3)]
+		public int[] BornPos { get; set; }
 
 	}
 }

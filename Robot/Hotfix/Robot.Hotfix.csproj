@@ -34,6 +34,51 @@
         <Compile Include="..\..\Unity\Codes\Hotfix\Module\AI\**\*.cs">
             <Link>Module\AI\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Buff\BuffComponentSystem.cs">
+          <Link>Module\Battle\Buff\BuffComponentSystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Buff\BuffCountDownComponentSystem.cs">
+          <Link>Module\Battle\Buff\BuffCountDownComponentSystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Buff\BuffEntitySystem.cs">
+          <Link>Module\Battle\Buff\BuffEntitySystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Buff\BuffFactory.cs">
+          <Link>Module\Battle\Buff\BuffFactory.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Buff\BuffHelper.cs">
+          <Link>Module\Battle\Buff\BuffHelper.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Buff\BuffTickComponentSystem.cs">
+          <Link>Module\Battle\Buff\BuffTickComponentSystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Bullet\BulletComponentSystem.cs">
+          <Link>Module\Battle\Bullet\BulletComponentSystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Condition\ConditionDispatcherSystem.cs">
+          <Link>Module\Battle\Condition\ConditionDispatcherSystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Effect\EffectDispatcherSystem.cs">
+          <Link>Module\Battle\Effect\EffectDispatcherSystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Effect\EffectEntitySystem.cs">
+          <Link>Module\Battle\Effect\EffectEntitySystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Effect\EffectFactory.cs">
+          <Link>Module\Battle\Effect\EffectFactory.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Effect\EffectHelper.cs">
+          <Link>Module\Battle\Effect\EffectHelper.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Spell\SpellEntitySystem.cs">
+          <Link>Module\Battle\Spell\SpellEntitySystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Spell\SpellFactory.cs">
+          <Link>Module\Battle\Spell\SpellFactory.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Hotfix\Module\Battle\Spell\SpellHelper.cs">
+          <Link>Module\Battle\Spell\SpellHelper.cs</Link>
+        </Compile>
 
         <Compile Include="..\..\Unity\Codes\Hotfix\Module\Message\**\*.cs">
             <Link>Module\Message\%(RecursiveDir)%(FileName)%(Extension)</Link>

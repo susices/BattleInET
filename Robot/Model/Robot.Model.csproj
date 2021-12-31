@@ -31,6 +31,51 @@
         <Compile Include="..\..\Server\Model\Base\StructBsonSerialize.cs">
           <Link>Base\StructBsonSerialize.cs</Link>
         </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Buff\BaseEffectAttribute.cs">
+          <Link>Module\Battle\Buff\BaseEffectAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Buff\BuffComponent.cs">
+          <Link>Module\Battle\Buff\BuffComponent.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Buff\BuffCountDownComponent.cs">
+          <Link>Module\Battle\Buff\BuffCountDownComponent.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Buff\BuffEntity.cs">
+          <Link>Module\Battle\Buff\BuffEntity.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Buff\BuffState.cs">
+          <Link>Module\Battle\Buff\BuffState.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Buff\BuffTickComponent.cs">
+          <Link>Module\Battle\Buff\BuffTickComponent.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Bullet\BulletComponent.cs">
+          <Link>Module\Battle\Bullet\BulletComponent.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Condition\BaseConditionAttribute.cs">
+          <Link>Module\Battle\Condition\BaseConditionAttribute.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Condition\ConditionDispatcher.cs">
+          <Link>Module\Battle\Condition\ConditionDispatcher.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Condition\ICondition.cs">
+          <Link>Module\Battle\Condition\ICondition.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Effect\EffectDispatcher.cs">
+          <Link>Module\Battle\Effect\EffectDispatcher.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Effect\EffectEntity.cs">
+          <Link>Module\Battle\Effect\EffectEntity.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Effect\IEffect.cs">
+          <Link>Module\Battle\Effect\IEffect.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Spell\SpellComponent.cs">
+          <Link>Module\Battle\Spell\SpellComponent.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Module\Battle\Spell\SpellEntity.cs">
+          <Link>Module\Battle\Spell\SpellEntity.cs</Link>
+        </Compile>
         <Compile Include="..\..\Unity\Codes\Model\Module\Config\**\*.cs">
             <Link>Module\Config\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>

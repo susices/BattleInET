@@ -5,5 +5,6 @@
         Player = 1,
         Monster = 2,
         NPC = 3,
+        Bullect = 4,
     }
 }

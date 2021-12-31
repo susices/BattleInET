@@ -7,26 +7,26 @@ namespace ET
 {
     [ProtoContract]
     [Config]
-    public partial class UnitConfigCategory : ProtoObject
+    public partial class BulletInfoConfigCategory : ProtoObject
     {
-        public static UnitConfigCategory Instance;
+        public static BulletInfoConfigCategory Instance;
 		
         [ProtoIgnore]
         [BsonIgnore]
-        private Dictionary<int, UnitConfig> dict = new Dictionary<int, UnitConfig>();
+        private Dictionary<int, BulletInfoConfig> dict = new Dictionary<int, BulletInfoConfig>();
 		
         [BsonElement]
         [ProtoMember(1)]
-        private List<UnitConfig> list = new List<UnitConfig>();
+        private List<BulletInfoConfig> list = new List<BulletInfoConfig>();
 		
-        public UnitConfigCategory()
+        public BulletInfoConfigCategory()
         {
             Instance = this;
         }
 		
         public override void EndInit()
         {
-            foreach (UnitConfig config in list)
+            foreach (BulletInfoConfig config in list)
             {
                 config.EndInit();
                 this.dict.Add(config.Id, config);
@@ -34,13 +34,13 @@ namespace ET
             this.AfterEndInit();
         }
 		
-        public UnitConfig Get(int id)
+        public BulletInfoConfig Get(int id)
         {
-            this.dict.TryGetValue(id, out UnitConfig item);
+            this.dict.TryGetValue(id, out BulletInfoConfig item);
 
             if (item == null)
             {
-                throw new Exception($"配置找不到，配置表名: {nameof (UnitConfig)}，配置id: {id}");
+                throw new Exception($"配置找不到，配置表名: {nameof (BulletInfoConfig)}，配置id: {id}");
             }
 
             return item;
@@ -51,12 +51,12 @@ namespace ET
             return this.dict.ContainsKey(id);
         }
 
-        public Dictionary<int, UnitConfig> GetAll()
+        public Dictionary<int, BulletInfoConfig> GetAll()
         {
             return this.dict;
         }
 
-        public UnitConfig GetOne()
+        public BulletInfoConfig GetOne()
         {
             if (this.dict == null || this.dict.Count <= 0)
             {
@@ -67,14 +67,14 @@ namespace ET
     }
 
     [ProtoContract]
-	public partial class UnitConfig: ProtoObject, IConfig
+	public partial class BulletInfoConfig: ProtoObject, IConfig
 	{
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		[ProtoMember(2)]
-		public int Type { get; set; }
+		[ProtoMember(3)]
+		public int TriggerEffect { get; set; }
 		[ProtoMember(4)]
-		public int TypeConfigId { get; set; }
+		public int BulletAIConfigId { get; set; }
 
 	}
 }

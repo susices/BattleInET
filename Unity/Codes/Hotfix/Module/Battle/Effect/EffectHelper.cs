@@ -14,12 +14,11 @@ namespace ET
         public static void CastEffect(Entity castEffectEntity, int effectConfigId)
         {
             
-
-            Type castEffectEntityType = castEffectEntity.GetType();
-            if (castEffectEntityType!= typeof(SpellEntity) && castEffectEntityType!=typeof(BuffEntity))
-            {
-                return;
-            }
+            // Type castEffectEntityType = castEffectEntity.GetType();
+            // if (castEffectEntityType!= typeof(SpellEntity) && castEffectEntityType!=typeof(BuffEntity))
+            // {
+            //     return;
+            // }
 
             var effectEntity =  EffectFactory.Create(castEffectEntity, effectConfigId);
             EffectDispatcher.Instance.RunEffect(effectEntity, effectConfigId);
