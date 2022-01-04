@@ -72,8 +72,12 @@ namespace ET
 		[ProtoMember(1)]
 		public int Id { get; set; }
 		[ProtoMember(3)]
-		public int TriggerEffect { get; set; }
+		public int ColliderType { get; set; }
 		[ProtoMember(4)]
+		public int[] ColliderArgs { get; set; }
+		[ProtoMember(5)]
+		public int TriggerEffect { get; set; }
+		[ProtoMember(6)]
 		public int BulletAIConfigId { get; set; }
 
 	}
